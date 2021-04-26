@@ -1,0 +1,58 @@
+This To Do App is an entirely PHP - HTML based app.
+
+The app allows the user to login (authenticate), visualize a todo list, add, edit, delete, save and export. Because
+it includes different functionalities, I divided the app into 12 php files.
+
+1. index.php		--> It's the first screen that a user sees, where it gives a brief explanation and a login link.
+2. login.php		--> Allows the user to login into the app and redirects to view.php if the data is correct (the User Name can be
+			 any email - looking like string and the Password is todo123).
+3. logout.php		--> In case the user decides to logout at any minute from the app, this file will erase the authentication data.
+4. view.php		--> It is the main screen menu. Here the user can visualize his/her todo list. If there is data in the database,
+			the user can search a task by introducing a key word in the search bar or the user can sort the data by selecting
+			one of the four options available. (Each todo task is composed by a title, brief description, the date it was added
+			and the due date). The user can also add, edit or mark tasks as complete.
+5. completed.php 	--> In this screen, the user can visualize a list of the completed tasks.
+6. export.php		--> This file contains the code for exporting any of the two lists (todo list data or completed tasks data) as csv
+			files.
+7. add.php		--> In this screen, the user can introuce new tasks by filling in the blanks.
+8. edit.php		--> In this screen, the user can edit or update a todo task entry.
+9. delete.php		--> This file contains the code for deleting a selected todo task or completed task.
+10. done.php		--> This screen will give the user the option of marking a todo task as completed (moving its data to another database),
+			or deleting the todo task data.
+11. bootstrap.php	--> It contains a simple template I used for a past project.
+12. pdo.php		--> Configuration of database for being used by PHP with PDO.
+
+For the database and running the app in a local server, I used MySQL through MAMP.
+I created the database using the following commands.
+
+For Creating the database:
+
+create database assignment;
+
+GRANT ALL ON assignment.* TO 'carlos'@'localhost' IDENTIFIED BY 'capt';
+GRANT ALL ON assignment.* TO 'carlos'@'127.0.0.1' IDENTIFIED BY 'capt';
+
+For creating the todo list table:
+
+DROP TABLE todo;
+CREATE TABLE todo (
+   todo_id INT UNSIGNED NOT NULL AUTO_INCREMENT KEY,
+   title VARCHAR(128),
+   description VARCHAR(128),
+   added DATE,
+   due DATE
+);
+
+For creating the completed list table:
+
+DROP TABLE completed;
+CREATE TABLE completed (
+   completed_id INT UNSIGNED NOT NULL AUTO_INCREMENT KEY,
+   title VARCHAR(128),
+   description VARCHAR(128),
+   added DATE,
+   due DATE
+);
+
+The user should start the app with index.php. The CSV file will be downloaded to the folder where the files of the app are at.
+
